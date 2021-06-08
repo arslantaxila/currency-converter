@@ -1,4 +1,7 @@
 # currency-converter
+```
+Version 1.0.0 - Developed by Raja Arslan
+```
 
 ## Project setup
 ```
