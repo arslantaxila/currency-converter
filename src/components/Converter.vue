@@ -4,7 +4,7 @@
       <label>Value:</label>
       <input
         @keyup="
-          (Object.entries(rates).length !== 0 && formValid==true && result.length!==0)
+          ((Object.entries(this.rates).length !== 0) && formValid==true && result.length!==0)
             ? convert()
             : (result = [])
         "
@@ -16,7 +16,7 @@
       <label>From:</label>
       <select
         @change="
-          (Object.entries(rates).length !== 0 && formValid==true && result.length!==0)
+          ((Object.entries(this.rates).length !== 0) && formValid==true && result.length!==0)
             ? convert()
             : (result = [])
         "
@@ -32,7 +32,7 @@
       <label>To:</label>
       <select
         @change="
-          (Object.entries(rates).length !== 0 && formValid==true && result.length!==0)
+          ((Object.entries(this.rates).length !== 0) && formValid==true && result.length!==0)
             ? convert()
             : (result = [])
         "
@@ -106,7 +106,7 @@ export default {
           alert("There is some error");
         return;
       }
-      if (Object.entries(this.rates).length === 0) {
+      if ((Object.entries(this.rates).length !== 0)) {
          await this.fetchRates();
       }
       if (fromCurrency == "EUR") {
@@ -123,7 +123,7 @@ export default {
     },
     async fetchCurrencies() {
       const res = await fetch(
-        "http://openexchangerates.org/api/currencies.json"
+        "https://openexchangerates.org/api/currencies.json"
       );
       const data = await res.json();
       return data;
@@ -140,7 +140,9 @@ export default {
   async created() {
     const curr = await this.fetchCurrencies();
     this.currencies = Object.keys(curr).map((key) => [String(key), curr[key]]);
+    console.log(this.rates);
     await this.fetchRates();
+    console.log(this.rates);
   },
 };
 </script>
