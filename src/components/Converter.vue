@@ -81,7 +81,7 @@ export default {
     },
     formValid() {
       const { value, fromCurrency, toCurrency } = this;
-      if (Number.isInteger(value) && value > 0 && fromCurrency=='' && toCurrency.length!==0) return true;
+      if (Number.isInteger(value) && value > 0 && fromCurrency!=='' && toCurrency.length!==0) return true;
       else if (!Number.isInteger(value)) return 2;
       else if (value <= 0) return 3;
       else if (fromCurrency=='' || toCurrency.length==0) return 4;
