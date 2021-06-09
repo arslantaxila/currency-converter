@@ -140,9 +140,7 @@ export default {
   async created() {
     const curr = await this.fetchCurrencies();
     this.currencies = Object.keys(curr).map((key) => [String(key), curr[key]]);
-    console.log(this.rates);
     await this.fetchRates();
-    console.log(this.rates);
   },
 };
 </script>
