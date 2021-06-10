@@ -106,7 +106,7 @@ export default {
           alert("There is some error");
         return;
       }
-      if ((Object.entries(this.rates).length !== 0)) {
+      if ((Object.entries(this.rates).length == 0)) {
          await this.fetchRates();
       }
       if (fromCurrency == "EUR") {
